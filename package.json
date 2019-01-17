@@ -10,6 +10,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": ">= 8.10.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SoftRoles/user-env-variable.git"
@@ -18,6 +21,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/SoftRoles/user-env-variable/issues"
+  },
+  "dependencies": {
+    "regedit": "^3.0.2"
   },
   "homepage": "https://github.com/SoftRoles/user-env-variable#readme"
 }
