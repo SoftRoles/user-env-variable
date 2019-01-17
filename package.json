@@ -1,0 +1,23 @@
+{
+  "name": "@softroles/user-env-variable",
+  "version": "1.0.0",
+  "description": "Get/Set user environment variables",
+  "keywords": [
+    "environment",
+    "variable"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SoftRoles/user-env-variable.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SoftRoles/user-env-variable/issues"
+  },
+  "homepage": "https://github.com/SoftRoles/user-env-variable#readme"
+}
