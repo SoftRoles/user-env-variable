@@ -1,5 +1,5 @@
 var assert = require('assert')
-var userEnvVariable = require("../lib/index")
+var userEnvVariable = require("..")
 
 userEnvVariable.list(function(err, result){
   assert.equal(err,null)
