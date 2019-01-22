@@ -78,7 +78,7 @@ function get(key, cb) {
     let bashrcPath = path.join(os.homedir(), '.bashrc')
     findInFiles.find(key, path.dirname(bashrcPath), '.bashrc$').then(function (results) {
       if (results[bashrcPath]) {
-        cb(null, results[bashrcPath].line.replace('export ', '').split('=')[1])
+        cb(null, results[bashrcPath].line[0].replace('export ', '').split('=')[1])
       }
       else cb(null, null)
     })
