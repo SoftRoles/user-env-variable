@@ -37,7 +37,7 @@ module.exports.set = set
  * @api public
  */
 function list(cb) {
-  if (process.platform == 'win2') {
+  if (process.platform == 'win32') {
     regedit.arch.list('HKCU\\Environment', function (err, result) {
       if (err) cb(err, null)
       else {
@@ -66,7 +66,7 @@ function list(cb) {
  * @api public
  */
 function get(key, cb) {
-  if (process.platform == 'win2') {
+  if (process.platform == 'win32') {
     regedit.arch.list('HKCU\\Environment', function (err, result) {
       if (err) cb(err, null)
       else {
@@ -93,7 +93,7 @@ function get(key, cb) {
  * @api public
  */
 function set(key, value, cb) {
-  if (process.platform == 'win2') {
+  if (process.platform == 'win32') {
     regedit.putValue({
       'HKCU\\Environment': {
         [key]: {
