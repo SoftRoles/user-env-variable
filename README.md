@@ -1,6 +1,6 @@
 # user-env-variable
 
-This module get and sets environment variables directly from registry on Windows. 
+This module get and sets environment variables directly from registry on Windows/Linux. 
 
 ## Install
 
