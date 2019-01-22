@@ -112,14 +112,19 @@ function set(key, value, cb) {
         const options = {
           files: bashrcPath,
           from: results[bashrcPath].line[0],
-          to: 'export ' + variable + '=' + String(value),
+          to: 'export ' + key + '=' + String(value),
         };
         replace(options, (err, changes) => {
           if (err) cb(err)
           else cb(null)
         });
       }
-      else cb(null)
+      else{
+        fs.appendFile(bashrcPath, 'export ' + key + '=' + String(value), function (err) {
+          if (err) cb(err)
+          else cb(null)
+        });
+      } 
     })
   }
 }
