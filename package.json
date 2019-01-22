@@ -23,7 +23,10 @@
     "url": "https://github.com/SoftRoles/user-env-variable/issues"
   },
   "dependencies": {
-    "regedit": "^3.0.2"
+    "find-in-files": "^0.5.0",
+    "regedit": "^3.0.2",
+    "replace-in-file": "^3.4.3"
   },
+  "os" : [ "win32", "linux" ],
   "homepage": "https://github.com/SoftRoles/user-env-variable#readme"
 }
