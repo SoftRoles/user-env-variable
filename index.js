@@ -37,7 +37,7 @@ module.exports.set = set
  * @api public
  */
 function list(cb) {
-  if (process.platform == 'win32') {
+  if (process.platform == 'win2') {
     regedit.arch.list('HKCU\\Environment', function (err, result) {
       if (err) cb(err, null)
       else {
@@ -49,10 +49,9 @@ function list(cb) {
     var bashrcPath = path.join(os.homedir(), '.bashrc')
     findInFiles.find('export', path.dirname(bashrcPath), '.bashrc$').then(function (results) {
       var variables = []
-      console.log(results)
-      if (results[bashrcPath]) {
-        results['.bashrc'].line.forEach(function (item) {
-          variables.push(item.replace('export ', '').split(' = ')[0])
+      if (results[bash]) {
+        results[bashrcPath].line.forEach(function (item) {
+          variables.push(item.replace('export ', '').split('=')[0])
         })
       }
       cb(null, variables)
