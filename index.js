@@ -49,7 +49,7 @@ function list(cb) {
     var bashrcPath = path.join(os.homedir(), '.bashrc')
     findInFiles.find('export', path.dirname(bashrcPath), '.bashrc$').then(function (results) {
       var variables = []
-      if (results[bash]) {
+      if (results[bashrcPath]) {
         results[bashrcPath].line.forEach(function (item) {
           variables.push(item.replace('export ', '').split('=')[0])
         })
