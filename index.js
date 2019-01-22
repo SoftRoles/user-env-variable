@@ -93,14 +93,33 @@ function get(key, cb) {
  * @api public
  */
 function set(key, value, cb) {
-  regedit.putValue({
-    'HKCU\\Environment': {
-      [key]: {
-        value: String(value),
-        type: 'REG_EXPAND_SZ'
+  if (process.platform == 'win2') {
+    regedit.putValue({
+      'HKCU\\Environment': {
+        [key]: {
+          value: String(value),
+          type: 'REG_EXPAND_SZ'
+        }
       }
-    }
-  }, function (err) {
-    cb(err)
-  })
+    }, function (err) {
+      cb(err)
+    })
+  }
+  else{
+    let bashrcPath = path.join(os.homedir(), '.bashrc')
+    findInFiles.find(key, path.dirname(bashrcPath), '.bashrc$').then(function (results) {
+      if (results[bashrcPath]) {
+        const options = {
+          files: bashrcPath,
+          from: results[bashrcPath].line[0],
+          to: 'export ' + variable + '=' + String(value),
+        };
+        replace(options, (err, changes) => {
+          if (err) cb(err)
+          else cb(null)
+        });
+      }
+      else cb(null)
+    })
+  }
 }
