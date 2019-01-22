@@ -66,12 +66,23 @@ function list(cb) {
  * @api public
  */
 function get(key, cb) {
-  regedit.arch.list('HKCU\\Environment', function (err, result) {
-    if (err) cb(err, null)
-    else {
-      cb(null, result['HKCU\\Environment'].values[key])
-    }
-  })
+  if (process.platform == 'win2') {
+    regedit.arch.list('HKCU\\Environment', function (err, result) {
+      if (err) cb(err, null)
+      else {
+        cb(null, result['HKCU\\Environment'].values[key])
+      }
+    })
+  }
+  else {
+    let bashrcPath = path.join(os.homedir(), '.bashrc')
+    findInFiles.find(key, path.dirname(bashrcPath), '.bashrc$').then(function (results) {
+      if (results[bashrcPath]) {
+        cb(null, results[bashrcPath].line.replace('export ', '').split('=')[1])
+      }
+      else cb(null, null)
+    })
+  }
 }
 
 /**
